@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="onCliclistener"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/re_top"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/appColor">
+
+            <RelativeLayout
+                android:id="@+id/rl_back_current"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/select_bg">
+
+                <ImageView
+                    android:id="@+id/iv_back_current"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:src="@mipmap/back"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/current_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:text="创建名片"
+                android:textColor="@color/bg_White"
+                android:textSize="14sp"/>
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.cdhy.invoice.invoice.ui.custom.CustomLinearLayout
+                    android:id="@+id/current_qymc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:setButtonVisible="true"
+                    app:setDescribe="企业名称"
+                    app:setDetails="绑定企业名称"/>
+
+                <com.cdhy.invoice.invoice.ui.custom.CustomLinearLayout
+                    android:id="@+id/current_qysh"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:setButtonVisible="true"
+                    app:setDescribe="税号"
+                    app:setDetails="绑定税号"/>
+
+                <com.cdhy.invoice.invoice.ui.custom.CustomLinearLayout
+                    android:id="@+id/current_qydz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:setButtonVisible="false"
+                    app:setDescribe="地址"
+                    app:setDetails="绑定地址"/>
+
+                <com.cdhy.invoice.invoice.ui.custom.CustomLinearLayout
+                    android:id="@+id/current_qydh"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:setButtonVisible="false"
+                    app:setDescribe="电话"
+                    app:setDetails="电话"/>
+
+                <com.cdhy.invoice.invoice.ui.custom.CustomLinearLayout
+                    android:id="@+id/current_khh"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:setButtonVisible="false"
+                    app:setDescribe="开户行"
+                    app:setDetails="绑定开户行"/>
+
+                <com.cdhy.invoice.invoice.ui.custom.CustomLinearLayout
+                    android:id="@+id/current_yhzh"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:setButtonVisible="false"
+                    app:setDescribe="银行账户"
+                    app:setDetails="绑定一银行账户"/>
+
+
+                <RelativeLayout
+                    android:id="@+id/sanzhengheyi_rl"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="20dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/sanzhengheyi_img"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerInParent="true"
+                        android:background="@mipmap/goodsimg_head_02"
+                        android:scaleType="fitXY"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:text="营业执照"/>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/current_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/current_frzz"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_centerInParent="true"
+                            android:background="@mipmap/goodsimg_head_02"
+                            android:scaleType="fitXY"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:text="营业执照"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/current_swdj"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_centerInParent="true"
+                            android:background="@mipmap/goodsimg_head_02"
+                            android:scaleType="fitXY"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:text="税务登记证"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/current_zzjg"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_centerInParent="true"
+                            android:background="@mipmap/goodsimg_head_02"
+                            android:scaleType="fitXY"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:text="组织机构代码证"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/sanzehng"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/buttonblue"
+                    android:text="上传三证"
+                    android:textColor="@color/white"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:id="@+id/sanzengheyi"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/buttonblue"
+                    android:text="上传三证合一"
+                    android:textColor="@color/white"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:id="@+id/bt_bing_current"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/current_line"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="35dp"
+                    android:background="@drawable/buttonblue"
+                    android:text="创建名片"
+                    android:textColor="@color/bg_White"
+                    android:textSize="14sp"
+                    android:onClick="@{onCliclistener}"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

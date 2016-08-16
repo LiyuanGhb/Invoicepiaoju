@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="onClickListener"
+            type="android.view.View.OnClickListener"/>
+        
+        <variable
+            name="zsxm"
+            type="String"/>
+        
+        <variable
+            name="phone"
+            type="String"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/re_top"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/appColor">
+
+            <RelativeLayout
+                android:id="@+id/back_rl_content"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:background="@drawable/select_bg"
+                android:onClick="@{onClickListener}">
+
+                <ImageView
+                    android:id="@+id/iv_back_contetn"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:src="@mipmap/back"/>
+
+                <TextView
+                    android:id="@+id/back_minme_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/iv_back_contetn"
+                    android:text="成员信息"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/top2"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/re_top"
+            android:layout_marginTop="15dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <TextView
+                android:id="@+id/name_mine_tx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="名字："
+                android:textSize="14sp"/>
+
+            <EditText
+                android:id="@+id/name_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="150dp"
+                android:layout_marginTop="15dp"
+                android:layout_toRightOf="@+id/name_mine_tx"
+                android:background="@null"
+                android:textSize="14sp"
+                android:text="@{zsxm}"/>
+
+            <Button
+                android:id="@+id/name_updata_content"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/buttonblue"
+                android:text="修改"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:visibility="visible"
+                android:onClick="@{onClickListener}"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/num_mine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/top2"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="电话："
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/num_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/top2"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/num_mine"
+            android:text="@{phone}"
+            android:textColor="#cccccc"
+            android:textSize="14sp"
+            />
+
+        <Button
+            android:id="@+id/delete_content"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/num_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/buttonred"
+            android:text="删  除"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/resetpasswd_content"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/delete_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/buttonblue"
+            android:text="确认修改"
+            android:textColor="@color/white"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/message_back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/resetpasswd_content"
+            android:text="退出登陆"
+            android:onClick="@{onClickListener}"/>
+    </RelativeLayout>
+</layout>

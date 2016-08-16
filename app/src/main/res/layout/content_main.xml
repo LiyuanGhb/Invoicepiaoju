@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appColor">
+
+    <RelativeLayout
+        android:id="@+id/re_top"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/appColor">
+        <Button
+            android:id="@+id/capture_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="5sp"
+            android:background="@drawable/addbackg"
+            android:textColor="@color/white"
+            android:text="相册" />
+<RelativeLayout
+    android:id="@+id/rl_back_content"
+    android:layout_width="70dp"
+    android:background="@drawable/select_bg"
+    android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/iv_back_content"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/back" />
+
+
+</RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:text="扫描二维码"
+            android:textColor="@color/bg_White"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/re_top">
+
+        <SurfaceView
+            android:id="@+id/capture_preview_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/re_top"
+            android:layout_gravity="center" />
+
+        <scanner.view.ViewfinderView
+            android:id="@+id/capture_viewfinder_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/capture_top_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="85.0dip"
+            android:layout_gravity="top|center"
+            android:layout_weight="3.0"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="正在扫描二维码"
+            android:textSize="16sp" />
+    </FrameLayout>
+
+
+    <Button
+        android:id="@+id/capture_minecode"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/draw"
+        android:visibility="gone"
+        android:layout_marginRight="15dp"
+        android:text="我的二维码" />
+
+</RelativeLayout>

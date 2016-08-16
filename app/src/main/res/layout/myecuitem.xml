@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/myecu_rl"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/myecu_img"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:background="@mipmap/mygongsi" />
+
+    <TextView
+        android:id="@+id/myecuitem_gsmc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_margin="10dp"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:maxEms="10"
+        android:layout_toRightOf="@+id/myecu_img"
+        android:textSize="14sp" />
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/myecuitem_guanli"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="60dp"
+        android:text="管理"
+        android:textColor="@color/appColor"
+        android:textSize="16sp"
+        android:visibility="visible" />
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp"
+        android:visibility="gone"
+        android:src="@mipmap/right" />
+
+</RelativeLayout>

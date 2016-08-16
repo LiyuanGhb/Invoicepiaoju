@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="ClickLitsener"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.cdhy.invoice.invoice.ui.custom.CustomContain
+            android:id="@+id/cpy_bxsq_rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{ClickLitsener}"
+            app:setLeftBackground="@mipmap/tickets"
+            app:setTitleDescribe="报销申请（普通用户）"/>
+
+        <com.cdhy.invoice.invoice.ui.custom.CustomContain
+            android:id="@+id/cpy_bxsp_rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{ClickLitsener}"
+            app:setLeftBackground="@mipmap/bangs"
+            app:setTitleDescribe="报销审评（审核员功能）"/>
+
+        <com.cdhy.invoice.invoice.ui.custom.CustomContain
+            android:id="@+id/cpy_qyfp_rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{ClickLitsener}"
+            app:setLeftBackground="@mipmap/minegongsi"
+            app:setTitleDescribe="企业发票（管理员功能）"/>
+
+        <com.cdhy.invoice.invoice.ui.custom.CustomContain
+            android:id="@+id/cpy_rysh_rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{ClickLitsener}"
+            app:setLeftBackground="@mipmap/gengxin"
+            app:setTitleDescribe="人员审评（管理员功能）"/>
+
+        <com.cdhy.invoice.invoice.ui.custom.CustomContain
+            android:id="@+id/cpy_gnsz_rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{ClickLitsener}"
+            app:setLeftBackground="@mipmap/gengxin"
+            app:setTitleDescribe="人员审评（管理员功能）"/>
+
+    </LinearLayout>
+</layout>

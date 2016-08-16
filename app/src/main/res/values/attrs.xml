@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Function_Contain">
+        <attr name="setLeftBackground" format="reference"/>
+        <attr name="setTitleDescribe" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="Custom_LinearLayout">
+        <attr name="setButtonVisible" format="boolean"/>
+        <attr name="setDescribe" format="string"/>
+        <attr name="setDetails" format="string"/>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="onClickListener"
+            type="android.view.View.OnClickListener"/>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_gray"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/info_head_rl"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/white"
+                android:onClick="@{onClickListener}">
+
+                <ImageView
+                    android:id="@+id/info_head_iv"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/heads"/>
+
+                <TextView
+                    android:id="@+id/info_user_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@+id/info_head_iv"
+                    android:text="账号："
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/info_userName_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@+id/info_user_tv"
+                    android:text="testName"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/info_userBottom_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/info_userName_tv"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/info_head_iv"
+                    android:text="用户名："
+                    android:textColor="#cccccc"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/info_userNameBottom_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/info_userName_tv"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/info_userBottom_tv"
+                    android:text="testAccount"
+                    android:textColor="#cccccc"
+                    android:textSize="14sp"/>
+
+            </RelativeLayout>
+
+
+            <com.cdhy.invoice.invoice.ui.custom.CustomContain
+                android:id="@+id/info_qyrz_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:setLeftBackground="@mipmap/bangs"
+                app:setTitleDescribe="企业认证"
+                android:onClick="@{onClickListener}"
+                />
+
+            <com.cdhy.invoice.invoice.ui.custom.CustomContain
+                android:id="@+id/info_mpsz_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:setLeftBackground="@mipmap/tickets"
+                app:setTitleDescribe="默认名片设置"
+                android:onClick="@{onClickListener}"
+                />
+
+            <com.cdhy.invoice.invoice.ui.custom.CustomContain
+                android:id="@+id/info_smqsz_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:setLeftBackground="@mipmap/bangs"
+                app:setTitleDescribe="扫描枪设置"
+                android:onClick="@{onClickListener}"
+                />
+
+            <com.cdhy.invoice.invoice.ui.custom.CustomContain
+                android:id="@+id/info_czsm_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:setLeftBackground="@mipmap/gengxin"
+                app:setTitleDescribe="操作说明"
+                android:onClick="@{onClickListener}"
+                />
+
+            <com.cdhy.invoice.invoice.ui.custom.CustomContain
+                android:id="@+id/info_fwxy_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:setLeftBackground="@mipmap/gengxin"
+                app:setTitleDescribe="服务协议"
+                android:onClick="@{onClickListener}"
+                />
+
+            <com.cdhy.invoice.invoice.ui.custom.CustomContain
+                android:id="@+id/info_bbh_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:setLeftBackground="@mipmap/gengxin"
+                app:setTitleDescribe="版本号"
+                android:onClick="@{onClickListener}"
+                />
+
+            <com.cdhy.invoice.invoice.ui.custom.CustomContain
+                android:id="@+id/info_bbgx_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:setLeftBackground="@mipmap/gengxin"
+                app:setTitleDescribe="版本更新"
+                android:onClick="@{onClickListener}"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</layout>

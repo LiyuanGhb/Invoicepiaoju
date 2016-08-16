@@ -1,0 +1,129 @@
+<resources>
+    <string name="app_name">票聚</string>
+    
+    <string name="versions">版本号：1.0.0</string>
+
+    <string name="action_settings">设置</string>
+
+    <!--password_login_aty-->
+    <string name="login">登陆</string>
+    <string name="btn_login">登\t\t\t\t\t\t陆</string>
+    <string name="telephone">手机号</string>
+    <string name="telephone_hind">请输入手机号</string>
+    <string name="password">密&#160;&#160;&#160;&#160;码</string>
+    <string name="password_hind">请输入密码</string>
+    <string name="user_register">新用户注册</string>
+    <string name="code_login">使用验证码登陆</string>
+    <string name="code">验证码</string>
+
+    <!--register_aty-->
+    <string name="register">注册票聚</string>
+    <string name="register_name">姓&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;名</string>
+    <string name="register_name_hind">请输入姓名</string>
+    <string name="register_phone">手&#160;&#160;机&#160;&#160;号</string>
+    <string name="register_code">验&#160;&#160;证&#160;&#160;码</string>
+    <string name="register_code_hind">请输验证码</string>
+    <string name="register_password">密&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;码</string>
+    <string name="register_repeat_password">重复密码</string>
+    <string name="register_repeat_password_hind">请重新输入密码</string>
+
+    <!--main_aty-->
+    <string name="main_piaoju">票聚</string>
+    <string name="main_shuoming">说明</string>
+    <string name="main_fapiao">发票</string>
+    <string name="main_baoxiao">报销</string>
+    <string name="main_kuaikai">快开</string>
+    <string name="main_mine">我的信息</string>
+    <string name="main_code">公司二维码名片</string>
+    <string name="main_create_company">创建公司</string>
+    <string name="main_code_click">点击上方的二维码放大扫描</string>
+    <string name="mainTvNoCompany">您还没有所属公司，请注册公司</string>
+    <string name="piaoju">票聚</string>
+    <string name="kaipiao">开票</string>
+    <string name="history">历史记录</string>
+    <string name="mine_nan">名字：</string>
+    <string name="mine_noName">未命名</string>
+    <string name="mine_userName">账号：</string>
+    <string name="mine_myfp">我的发票</string>
+    <string name="mine_createCompany">创建公司</string>
+    <string name="mine_myCompany">我的公司</string>
+    <string name="mine_pipeikuaikai">匹配快开</string>
+    <string name="mine_back">退出登录</string>
+    <string name="ip">请输入匹配IP</string>
+    <string name="quick_sure">确 定</string>
+    <string name="quick_ip">扫码查ip</string>
+    <string name="aaply_building">建设中</string>
+
+
+    <string name="scan_text">建议与镜头保持20cm距离,尽量避免逆光和阴影</string>
+    <string name="placeHolder">placeHolder</string>
+    <string name="seekbar_add">+</string>
+    <string name="seekbar_minus">-</string>
+    <string name="create">生成</string>
+    <string name="scan_failed">扫描失败</string>
+    <string name="bottom_hint">建议与镜头保持10CM距离，尽量避免逆光和阴影</string>
+    <string name="top_hint">将条形码或二维码置于取景框内系统会自动扫描</string>
+    <string name="cancel">取消</string>
+    <string name="msg_camera_framework_bug">抱歉，Android相机出现问题。您可能需要重启设备。</string>
+    <string name="button_ok">确定</string>
+    <string name="title_activity_upload_car_type">UploadCarType</string>
+    <string name="title_activity_appointment">AppointmentActivity</string>
+    <string name="title_activity_car_detail">CarDetailActivity</string>
+    <string name="title_activity_break_rule">BreakRuleActivity</string>
+
+    <!--historyAty-->
+    <string name="payFromName">付款方名称</string>
+    <string name="skName">收款方名称</string>
+    <string name="fpdm">发 票 代 码</string>
+    <string name="fphm">发 票 号 码</string>
+    <string name="jshj">价 税 合 计</string>
+    <string name="kprq">开 票 日 期</string>
+    <string name="delete">删 除</string>
+    <string name="down">下载并预览</string>
+    <string name="fpxq">发票详情</string>
+    <string name="choseCompanyMessage">选择企业信息</string>
+    <string name="current_createCompany">创建公司</string>
+    <string name="companyName">公司名称</string>
+    <string name="bindCompanyName">绑定公司名称</string>
+    <string name="shuihao">税号</string>
+    <string name="bindshuihao">绑定税号</string>
+    <string name="phone">电话</string>
+    <string name="Address">地址</string>
+    <string name="bindAddress">绑定地址</string>
+    <string name="kaihuhang">开户行</string>
+    <string name="bindkaihuhang">绑定开户行</string>
+    <string name="bank">银行账户</string>
+    <string name="bindBank">绑定银行卡号</string>
+    <string name="yinyezhizhao">营业执照</string>
+    <string name="shuiwudengjizheng">税务登记证</string>
+    <string name="zhuzhijigoucode">组织机构代码证</string>
+    <string name="uploadimage">上传照片</string>
+    <string name="chooseCamera">相机拍照</string>
+    <string name="choseAlbum">相册选择</string>
+    <string name="companyManager">管理</string>
+    <string name="companyName1">公司名字</string>
+    <string name="seeCompanyDescirbe">查看公司详细信息</string>
+    <string name="addDept">添加员工</string>
+    <string name="name">名字：</string>
+    <string name="phone_">电话：</string>
+    <string name="ecuserDelete">删 除</string>
+    <string name="ecuserSureDelete">确认修改</string>
+    <string name="ecuserPhone">电话：</string>
+    <string name="ecuseUpdate">修改</string>
+    <string name="grandsonMessage">成员信息</string>
+    <string name="wdfp">我的发票</string>
+    <string name="wjmm">忘记密码?</string>
+    <string name="updatePassword">修改密码</string>
+    <string name="fphone">手&#160;&#160;机&#160;&#160;号</string>
+    <string name="fcode">验&#160;&#160;证&#160;&#160;码</string>
+    <string name="fpassword">密&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;码</string>
+    <string name="fresetpassword">重复密码</string>
+    <string name="fsure">确&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;定</string>
+    <string name="fhindphone">请输入手机号</string>
+    <string name="fhidcode">请输验证码</string>
+    <string name="fhindpasswrd">请输入密码</string>
+    <string name="fhindresetpassword">请重新输入密码</string>
+    <string name="sdtj">手动添加</string>
+    <string name="ygdh">员工电话</string>
+
+</resources>
