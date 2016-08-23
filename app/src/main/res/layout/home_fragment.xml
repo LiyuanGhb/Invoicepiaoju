@@ -106,5 +106,15 @@
             android:text="@string/Home_createCompanyHint"
             android:textSize="18sp" />
 
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Home_creteCompany_hint"
+            android:layout_alignLeft="@+id/company_describe"
+            android:layout_alignStart="@+id/company_describe"
+            android:layout_marginTop="34dp"
+            android:id="@+id/textView" />
+
     </RelativeLayout>
 </layout>
