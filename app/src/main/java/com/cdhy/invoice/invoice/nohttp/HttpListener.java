@@ -11,5 +11,5 @@ public interface HttpListener<T> {
     /**
      * 请求成功
      */
-    void onFailed(int what, String url, Object tag, CharSequence error, int resCode, long ms);
+    void onFailed(int what, String url, Object tag, String error, int resCode, long ms);
 }

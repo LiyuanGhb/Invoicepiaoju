@@ -1,6 +1,7 @@
 package com.cdhy.invoice.invoice.ui.fragment;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -56,6 +57,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, S
     @Override
     public void onResume() {
         super.onResume();
+
     }
 
     private void init() {
@@ -66,8 +68,8 @@ public class SettingFragment extends Fragment implements View.OnClickListener, S
         if (CustomApplication.LOGIN_STATE) {
             mPresenter.getUserDescribe(CustomApplication.athID);
             // FIXME: 2016/8/15 接口更新后修改
-            mBinding.infoUserNameTv.setText("zby");
-            mBinding.infoUserNameBottomTv.setText("18981443691");
+            mBinding.infoUserNameTv.setText(CustomApplication.ZSXM);
+            mBinding.infoUserNameBottomTv.setText(CustomApplication.userName);
         }
     }
 
@@ -82,7 +84,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, S
 
             case R.id.info_bbh_rl:
                 /*版本号*/
-                DialogHb.showdialog(getActivity(),"服务暂未开放");
+                DialogHb.showdialog(getActivity(), "服务暂未开放");
                 break;
 
             case R.id.info_czsm_rl:
@@ -92,7 +94,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, S
 
             case R.id.info_fwxy_rl:
                 /*服务协议*/
-                DialogHb.showdialog(getActivity(),"服务暂未开放");
+                DialogHb.showdialog(getActivity(), "服务暂未开放");
                 break;
 
             case R.id.info_head_rl:
@@ -109,17 +111,17 @@ public class SettingFragment extends Fragment implements View.OnClickListener, S
 
             case R.id.info_mpsz_rl:
                 /*默认名片设置*/
-                SetComActivity.what=1;
+                SetComActivity.what = 1;
                 startActivity(new Intent(getActivity(), SetComActivity.class));
                 break;
 
             case R.id.info_qyrz_rl:
                 /*企业认证*/
-                if(CustomApplication.LOGIN_STATE){
-                    SetComActivity.what=2;
+                if (CustomApplication.LOGIN_STATE) {
+                    SetComActivity.what = 2;
                     startActivity(new Intent(getActivity(), SetComActivity.class));
-                }else{
-                    startActivity(new Intent(getActivity(), PasswordLoginAty.class));
+                } else {
+                    startActivityForResult(new Intent(getActivity(), PasswordLoginAty.class), REQUEST_LOGIN);
                 }
                 break;
             case R.id.info_smqsz_rl:
@@ -132,34 +134,39 @@ public class SettingFragment extends Fragment implements View.OnClickListener, S
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case REQUEST_LOGIN:
-                Data userBean = UserMessage.newInstance().getUserBean();
-                mBinding.infoUserNameTv.setText(userBean.getZSXM());
-                mBinding.infoUserNameBottomTv.setText(userBean.getUSERNAME());
+        if (requestCode == resultCode) {
+            CustomApplication.index = true;
+            switch (requestCode) {
+                case REQUEST_LOGIN:
+                    Data userBean = UserMessage.newInstance().getUserBean();
+                    mBinding.infoUserNameTv.setText(userBean.getZSXM());
+                    mBinding.infoUserNameBottomTv.setText(userBean.getUSERNAME());
+                    CustomApplication.LOGIN_STATE = true;
+                    CustomApplication.athID = userBean.getAthID();
+                    CustomApplication.userId = userBean.getID();
+                    CustomApplication.ZSXM = userBean.getZSXM();
+                    CustomApplication.userName = userBean.getUSERNAME();
 
-                CustomApplication.LOGIN_STATE = true;
-                CustomApplication.athID = userBean.getAthID();
-                CustomApplication.userId = userBean.getID();
-
-                mSharedPreferencesHelper.setBooleanToShared(SharedPreferencesHelper.LOGIN_STATE, true);
-                mSharedPreferencesHelper.setParameterToShared(SharedPreferencesHelper.ATHID, userBean.getAthID());
-                mSharedPreferencesHelper.setParameterToShared(SharedPreferencesHelper.USER_ID, userBean.getID());
-                break;
-            case REQUEST_UPDATE_DESCRIBE:
-                switch (FUNCTION_TYPE = data.getIntExtra("type", 0)) {
-                    case 0:
-                        break;
-                    case 1:
-                        mPresenter.getUserDescribe(CustomApplication.athID);
-                        break;
-                    case 2:
-                        mBinding.infoUserNameTv.setText("");
-                        mBinding.infoUserNameBottomTv.setText("");
-                        break;
-                }
-
-                break;
+                    mSharedPreferencesHelper.setBooleanToShared(SharedPreferencesHelper.LOGIN_STATE, true);
+                    mSharedPreferencesHelper.setParameterToShared(SharedPreferencesHelper.ATHID, userBean.getAthID());
+                    mSharedPreferencesHelper.setParameterToShared(SharedPreferencesHelper.USER_ID, userBean.getID());
+                    mSharedPreferencesHelper.setParameterToShared(SharedPreferencesHelper.ZSXM, userBean.getZSXM());
+                    mSharedPreferencesHelper.setParameterToShared(SharedPreferencesHelper.USERNAME, userBean.getUSERNAME());
+                    break;
+                case REQUEST_UPDATE_DESCRIBE:
+                    switch (FUNCTION_TYPE = data.getIntExtra("type", 0)) {
+                        case 0:
+                            break;
+                        case 1:
+                            mPresenter.getUserDescribe(CustomApplication.athID);
+                            break;
+                        case 2:
+                            mBinding.infoUserNameTv.setText("未登陆");
+                            mBinding.infoUserNameBottomTv.setText("未登陆");
+                            break;
+                    }
+                    break;
+            }
         }
     }
 
@@ -170,8 +177,18 @@ public class SettingFragment extends Fragment implements View.OnClickListener, S
     }
 
     @Override
+    public void OnHttpListenerFailed(String error) {
+
+    }
+
+    @Override
     public void hintMessage(String msg) {
         Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public Context getViewContext() {
+        return getActivity();
     }
 
     /**

@@ -18,7 +18,7 @@ public class MainPresenter implements MainAtyControl.Presenter {
     }
 
     @Override
-    public void showFragment(Fragment fragment, String title) {
-        mView.initFragmentAndTitle(fragment, title);
+    public void showFragment(int index, String title) {
+        mView.initFragmentAndTitle(index, title);
     }
 }

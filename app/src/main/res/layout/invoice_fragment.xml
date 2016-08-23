@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="onClickListener"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -11,11 +20,39 @@
             android:orientation="horizontal">
 
             <RelativeLayout
+                android:id="@+id/quickopen_rl"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/select_bg"
+                android:onClick="@{onClickListener}">
+
+                <ImageView
+                    android:id="@+id/quickopen_img"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@mipmap/kuaikai"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/quickopen_img"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="16dp"
+                    android:text="快开"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:id="@+id/invoice_code"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/select_bg">
+                android:background="@drawable/select_bg"
+                android:onClick="@{onClickListener}">
 
                 <ImageView
                     android:id="@+id/invoice_code_img"
@@ -41,7 +78,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/select_bg">
+                android:background="@drawable/select_bg"
+                android:onClick="@{onClickListener}">
 
                 <ImageView
                     android:id="@+id/invoice_query_img"
@@ -68,7 +106,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/select_bg">
+                android:background="@drawable/select_bg"
+                android:onClick="@{onClickListener}">
 
                 <ImageView
                     android:id="@+id/invoice_draw_img"

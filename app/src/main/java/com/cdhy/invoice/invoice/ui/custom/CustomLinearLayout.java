@@ -82,4 +82,16 @@ public class CustomLinearLayout extends RelativeLayout {
         mDetails.setSelection(str.length());
     }
 
+    public void setButtonText(String text){
+        mFunction.setText(text);
+    }
+
+    public void setButtonEnabled(boolean state){
+        mFunction.setEnabled(state);
+    }
+
+    public void setButtonBackGround(int resId){
+        mFunction.setBackground(getResources().getDrawable(resId));
+    }
+
 }

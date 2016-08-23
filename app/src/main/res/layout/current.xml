@@ -9,6 +9,7 @@
     </data>
 
     <LinearLayout
+        android:id="@+id/current_contain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -17,7 +18,8 @@
             android:id="@+id/re_top"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@color/appColor">
+            android:background="@color/appColor"
+            android:onClick="@{onCliclistener}">
 
             <RelativeLayout
                 android:id="@+id/rl_back_current"

@@ -15,6 +15,8 @@ public class SharedPreferencesHelper {
     public static final String USER_ID = "userId";
     public static final String IP = "ip";
     public static final String SAVE_IP = "saveIp";
+    public static final String ZSXM = "zsxm";
+    public static final String USERNAME = "userName";
 
 
     public static SharedPreferencesHelper mSharedPreferencesHelper;

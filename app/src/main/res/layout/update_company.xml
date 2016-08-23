@@ -25,7 +25,8 @@
                 android:id="@+id/rl_back_update"
                 android:layout_width="70dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/select_bg">
+                android:background="@drawable/select_bg"
+                android:onClick="@{onCliclistener}">
 
                 <ImageView
                     android:id="@+id/iv_back_update"
@@ -42,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerInParent="true"
-                android:text="创建名片"
+                android:text="修改名片"
                 android:textColor="@color/bg_White"
                 android:textSize="14sp"/>
         </RelativeLayout>

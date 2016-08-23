@@ -2,56 +2,69 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
         <variable
             name="onClickListener"
             type="android.view.View.OnClickListener"/>
     </data>
 
-    <LinearLayout
+    <RadioGroup
+        android:id="@+id/nav_contain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
+        <RadioButton
             android:id="@+id/nav_home"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@null"
-            android:drawableTop="@mipmap/home"
-            android:onClick="@{onClickListener}"
-            android:text="首页"
+            android:drawableTop="@mipmap/home_page"
+            android:text="@string/Bottom_Home"
+            android:textColor="@color/gray"
+            android:button="@null"
+            android:gravity="center"
             />
 
-        <Button
+        <RadioButton
             android:id="@+id/nav_invoice"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@null"
-            android:drawableTop="@mipmap/list"
-            android:onClick="@{onClickListener}"
-            android:text="发票管理"/>
+            android:drawableTop="@mipmap/fpgl"
+            android:text="@string/Bottom_Invoice"
+            android:textColor="@color/gray"
+            android:button="@null"
+            android:gravity="center"
+            />
 
-        <Button
+        <RadioButton
             android:id="@+id/nav_company"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@null"
-            android:drawableTop="@mipmap/orderform"
-            android:onClick="@{onClickListener}"
-            android:text="我的企业"/>
+            android:drawableTop="@mipmap/company"
+            android:text="@string/Bottom_Company"
+            android:textColor="@color/gray"
+            android:button="@null"
+            android:gravity="center"
+            />
 
-        <Button
+        <RadioButton
             android:id="@+id/nav_info"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@null"
-            android:drawableTop="@mipmap/people"
-            android:onClick="@{onClickListener}"
-            android:text="我的信息"/>
+            android:drawableTop="@mipmap/info"
+            android:text="@string/Bottom_Info"
+            android:textColor="@color/gray"
+            android:button="@null"
+            android:gravity="center"
+            />
 
-    </LinearLayout>
+    </RadioGroup>
 </layout>

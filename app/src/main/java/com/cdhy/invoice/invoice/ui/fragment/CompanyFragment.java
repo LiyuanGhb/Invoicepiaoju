@@ -1,6 +1,7 @@
 package com.cdhy.invoice.invoice.ui.fragment;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,7 +12,9 @@ import android.widget.Toast;
 
 import com.cdhy.invoice.invoice.R;
 import com.cdhy.invoice.invoice.databinding.CompanyFragmentBinding;
-import com.cdhy.invoice.invoice.ui.custom.CustomContain;
+import com.cdhy.invoice.invoice.ui.activity.AuthComActivity;
+import com.cdhy.invoice.invoice.ui.activity.SetCompanyActivity;
+import com.cdhy.invoice.invoice.ui.util.DialogHb;
 
 /**
  * Created by Administrator on 2016/8/6.
@@ -40,23 +43,23 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()){
             case R.id.cpy_bxsq_rl:
                 //报销申请
-                Toast.makeText(getActivity(), "报销申请", Toast.LENGTH_SHORT).show();
+                DialogHb.showdialog(getActivity(),"功能暂未开放");
                 break;
             case R.id.cpy_bxsp_rl:
                 //报销审评
-                Toast.makeText(getActivity(), "报销审评", Toast.LENGTH_SHORT).show();
+                DialogHb.showdialog(getActivity(),"功能暂未开放");;
                 break;
             case R.id.cpy_qyfp_rl:
                 //企业发票
-                Toast.makeText(getActivity(), "企业发票", Toast.LENGTH_SHORT).show();
+                DialogHb.showdialog(getActivity(),"功能暂未开放");
                 break;
             case R.id.cpy_rysh_rl:
-                //人员审核
-                Toast.makeText(getActivity(), "人员审核", Toast.LENGTH_SHORT).show();
+                //入企申请
+                startActivity(new Intent(getActivity(), AuthComActivity.class));
                 break;
             case R.id.cpy_gnsz_rl:
-                //功能设置
-                Toast.makeText(getActivity(), "功能设置", Toast.LENGTH_SHORT).show();
+                //人员管理
+                startActivity(new Intent(getActivity(), SetCompanyActivity.class));
                 break;
         }
     }

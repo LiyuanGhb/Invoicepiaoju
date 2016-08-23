@@ -1,8 +1,12 @@
 package com.cdhy.invoice.invoice.nohttp;
 
-import android.app.Activity;
 import android.content.Context;
+import android.widget.Toast;
 
+import com.cdhy.invoice.invoice.CustomApplication;
+import com.cdhy.invoice.invoice.ui.util.NetWorkUtil;
+import com.yolanda.nohttp.error.NetworkError;
+import com.yolanda.nohttp.error.TimeoutError;
 import com.yolanda.nohttp.rest.OnResponseListener;
 import com.yolanda.nohttp.rest.Request;
 import com.yolanda.nohttp.rest.Response;
@@ -50,7 +54,8 @@ public class HttpResponseListener<T> implements OnResponseListener<T> {
         //this.isLoading = isLoading;
     }
 
-    HttpResponseListener(Request<T> request, HttpListener<T> httpCallback) {
+    HttpResponseListener(Context context, Request<T> request, HttpListener<T> httpCallback) {
+        this.context = context;
         this.mRequest = request;
         this.callback = httpCallback;
     }
@@ -69,8 +74,15 @@ public class HttpResponseListener<T> implements OnResponseListener<T> {
 
     @Override
     public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-        if (callback != null)
+        if (callback != null) {
+            if (exception instanceof NetworkError) {
+                CustomApplication.isIntent = 1;
+                NetWorkUtil.showNoNetWorkDlg(context);
+            } else if (exception instanceof TimeoutError) {
+                Toast.makeText(context, "连接超时", Toast.LENGTH_SHORT).show();
+            }
             callback.onFailed(what, url, tag, exception.getMessage(), responseCode, networkMillis);
+        }
     }
 
     @Override

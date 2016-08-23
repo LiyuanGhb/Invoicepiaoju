@@ -25,8 +25,7 @@ public class UserParameter {
             json.put("invoke", "getUserInfo");
             JSONObject js = new JSONObject();
             js.put("type", "Android");
-            js.put("userid", userId);
-            js.put("client", CustomApplication.DEVICE_ID);
+            js.put("athID", CustomApplication.athID);
             json.put("p", js);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -59,7 +58,6 @@ public class UserParameter {
         url = json.toString();
         return url;
     }
-
 
 
 }

@@ -5,7 +5,7 @@
 
         <variable
             name="onClickListener"
-            type="android.view.View.OnClickListener"/>
+            type="android.view.View.OnClickListener" />
     </data>
 
     <RelativeLayout
@@ -19,51 +19,92 @@
             android:layout_above="@+id/viewpager_contain"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
-            android:text="Company"
-            android:maxLines="2"
+            android:ellipsize="end"
+            android:maxEms="14"
+            android:singleLine="true"
             android:textSize="21sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:visibility="visible" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager_contain"
             android:layout_width="256dp"
             android:layout_height="256dp"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/home_img_left"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toLeftOf="@+id/viewpager_contain"
+            android:background="@mipmap/leftss"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/home_img_right"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@+id/viewpager_contain"
+            android:background="@mipmap/rightss"
+            android:visibility="gone" />
 
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/home_btn_contain"
+            android:layout_width="266dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/viewpager_contain"
             android:layout_centerHorizontal="true"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <Button
                 android:id="@+id/home_btn_add"
+                style="@style/ButtonContain"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:background="@drawable/buttonblue"
                 android:onClick="@{onClickListener}"
-                android:text="新增"/>
+                android:text="@string/Home_Add" />
 
             <Button
                 android:id="@+id/home_btn_update"
+                style="@style/ButtonContain"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:onClick="@{onClickListener}"
-                android:text="修改"/>
+                android:text="@string/Home_Update" />
 
             <Button
                 android:id="@+id/home_btn_delete"
+                style="@style/ButtonContain"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:onClick="@{onClickListener}"
-                android:text="删除"/>
-
-
+                android:text="@string/Home_Delete" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/Home_createCompanyFirst"
+            android:layout_width="256dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/buttonblue"
+            android:onClick="@{onClickListener}"
+            android:text="@string/Home_CreateCompany"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/Home_creteCompany_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Home_createCompanyFirst"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="@string/Home_createCompanyHint"
+            android:textSize="18sp" />
 
     </RelativeLayout>
 </layout>

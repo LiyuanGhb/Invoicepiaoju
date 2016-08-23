@@ -1,18 +1,22 @@
 package com.cdhy.invoice.invoice.ui.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Toast;
 
 
+import com.cdhy.invoice.invoice.CustomApplication;
 import com.cdhy.invoice.invoice.R;
 import com.cdhy.invoice.invoice.control.PassWordLoginControl;
 import com.cdhy.invoice.invoice.databinding.PasswordLoginAtyBinding;
-import com.cdhy.invoice.invoice.model.User.Data;
 import com.cdhy.invoice.invoice.presenter.PassWordLoginPresenter;
 import com.cdhy.invoice.invoice.ui.fragment.SettingFragment;
 import com.github.lzyzsd.randomcolor.RandomColor;
@@ -20,7 +24,7 @@ import com.github.lzyzsd.randomcolor.RandomColor;
 /**
  * Created by ly on 2016/7/13. 账号密码登陆页
  */
-public class PasswordLoginAty extends Activity implements View.OnClickListener, PassWordLoginControl.View {
+public class PasswordLoginAty extends Activity implements View.OnClickListener, PassWordLoginControl.View, TextWatcher {
     private PasswordLoginAtyBinding mPasswordLoginAtyBinding;
     private PassWordLoginControl.Presenter mPresenter;
     public static final int REGISTER_REQUEST = 1;
@@ -38,6 +42,13 @@ public class PasswordLoginAty extends Activity implements View.OnClickListener, 
     private void init() {
         mPresenter = new PassWordLoginPresenter(this);
         mPasswordLoginAtyBinding.setOnClickListener(this);
+
+        mPasswordLoginAtyBinding.pwdEtPhone.addTextChangedListener(this);
+        mPasswordLoginAtyBinding.pwdEtPassword.addTextChangedListener(this);
+        mPasswordLoginAtyBinding.
+                pwdEtPhone.setSelection(mPasswordLoginAtyBinding.pwdEtPassword.getText().toString().length());
+
+        isEmptyEditText();
         setNameColor();
     }
 
@@ -57,9 +68,11 @@ public class PasswordLoginAty extends Activity implements View.OnClickListener, 
             case R.id.pwd_btn_login:
                 String userName = mPasswordLoginAtyBinding.pwdEtPhone.getText().toString();
                 String passWord = mPasswordLoginAtyBinding.pwdEtPassword.getText().toString();
+                setButtonState(false);
                 mPresenter.PassWordLogin(userName, passWord);
                 break;
             case R.id.current_rl_back_current:
+                setResult(3);
                 finish();
                 break;
             case R.id.pwd_tv_register:
@@ -72,6 +85,15 @@ public class PasswordLoginAty extends Activity implements View.OnClickListener, 
                 startActivity(new Intent(this, CodeLoginAty.class));
                 break;
         }
+    }
+
+    private void setButtonState(boolean state) {
+        if (state) {
+            mPasswordLoginAtyBinding.pwdBtnLogin.setBackground(getResources().getDrawable(R.drawable.buttonblue));
+        } else {
+            mPasswordLoginAtyBinding.pwdBtnLogin.setBackground(getResources().getDrawable(R.drawable.buttonblue_0));
+        }
+        mPasswordLoginAtyBinding.pwdBtnLogin.setEnabled(state);
     }
 
     @Override
@@ -96,10 +118,17 @@ public class PasswordLoginAty extends Activity implements View.OnClickListener, 
 
     @Override
     public void PassWordForSuccessSuccess() {
+        setButtonState(true);
         LoginSuccess();
     }
 
-    private void LoginSuccess( ) {
+    @Override
+    public void OnHttpListenerFailed(String error) {
+        setButtonState(true);
+    }
+
+    private void LoginSuccess() {
+        CustomApplication.index = true;
         setResult(SettingFragment.REQUEST_LOGIN);
         finish();
     }
@@ -109,4 +138,33 @@ public class PasswordLoginAty extends Activity implements View.OnClickListener, 
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public Context getViewContext() {
+        return this;
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+        isEmptyEditText();
+    }
+
+    private void isEmptyEditText() {
+        if (TextUtils.isEmpty(mPasswordLoginAtyBinding.pwdEtPhone.getText().toString())
+                || TextUtils.isEmpty(mPasswordLoginAtyBinding.pwdEtPassword.getText().toString())) {
+            mPasswordLoginAtyBinding.pwdBtnLogin.setBackground(getResources().getDrawable(R.drawable.buttonblue_0));
+            mPasswordLoginAtyBinding.pwdBtnLogin.setEnabled(false);
+        } else {
+            mPasswordLoginAtyBinding.pwdBtnLogin.setBackground(getResources().getDrawable(R.drawable.buttonblue));
+            mPasswordLoginAtyBinding.pwdBtnLogin.setEnabled(true);
+        }
+    }
 }

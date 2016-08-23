@@ -20,6 +20,7 @@ import com.cdhy.invoice.invoice.R;
 import com.cdhy.invoice.invoice.model.EcuInfoBean;
 import com.cdhy.invoice.invoice.ui.MineUrl;
 import com.cdhy.invoice.invoice.ui.adapter.MyecuItemAdapter;
+import com.cdhy.invoice.invoice.ui.util.DialogHb;
 import com.cdhy.invoice.invoice.ui.util.MineUtil;
 import com.cdhy.invoice.invoice.ui.util.UrlUtils;
 
@@ -65,7 +66,6 @@ public class SetComActivity extends Activity {
             @Override
             public void run() {
                 String resutl = MineUtil.postHttp(UrlUtils.mainUrl, fincomList());
-                Log.i("SetComActivity",resutl);
                 ecuInfoBeans = rtnEcuInfoBean(resutl);
                 Log.i("SetComActivity",ecuInfoBeans.size()+"Count");
                 Message message = new Message();
@@ -76,7 +76,6 @@ public class SetComActivity extends Activity {
         back_rl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ecuInfoBeans.clear();
                 finish();
             }
         });
@@ -87,28 +86,36 @@ public class SetComActivity extends Activity {
                 if (what == 1) {
                     showdialog(SetComActivity.this, "确定将" + ecuInfoBeans.get(position).getEcuName() + "设为默认公司吗？", ecuInfoBeans.get(position).getCustinfo());
                 } else if (what == 2) {
-                    Intent intent = new Intent(SetComActivity.this, AccreditationActivity.class);
-                    intent.putExtra("id", ecuInfoBeans.get(position).getCustinfo());
-                    startActivity(intent);
+                    if(ecuInfoBeans.get(position).getUPLOAD().equals("2")){
+                        DialogHb.showdialog(SetComActivity.this,"该企业已认证");
+                    }else{
+                        Intent intent = new Intent(SetComActivity.this, AccreditationActivity.class);
+                        intent.putExtra("id", ecuInfoBeans.get(position).getCustinfo());
+                        startActivity(intent);
+                    }
+
                 }
             }
         });
     }
 
-/*    @Override
+    @Override
     protected void onResume() {
         super.onResume();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                String resutl = MineUtil.postHttp(MineUrl.newHeads, fincomList());
-                ecuInfoBeans = rtnEcuInfoBean(resutl);
-                Message message = new Message();
-                message.obj = ecuInfoBeans;
-                handler.sendMessage(message);
-            }
-        }).start();
-    }*/
+        if(CustomApplication.index){
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    String resutl = MineUtil.postHttp(MineUrl.newHeads, fincomList());
+                    ecuInfoBeans = rtnEcuInfoBean(resutl);
+                    Message message = new Message();
+                    message.obj = ecuInfoBeans;
+                    handler.sendMessage(message);
+                }
+            }).start();
+        }
+    }
 
     public String fincomList() {
         String url = null;

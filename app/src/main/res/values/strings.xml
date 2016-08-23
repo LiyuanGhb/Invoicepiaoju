@@ -6,8 +6,8 @@
     <string name="action_settings">设置</string>
 
     <!--password_login_aty-->
-    <string name="login">登陆</string>
-    <string name="btn_login">登\t\t\t\t\t\t陆</string>
+    <string name="login">登录</string>
+    <string name="btn_login">登\t\t\t\t\t\t录</string>
     <string name="telephone">手机号</string>
     <string name="telephone_hind">请输入手机号</string>
     <string name="password">密&#160;&#160;&#160;&#160;码</string>
@@ -125,5 +125,16 @@
     <string name="fhindresetpassword">请重新输入密码</string>
     <string name="sdtj">手动添加</string>
     <string name="ygdh">员工电话</string>
+
+    <!--HomePageFragment-->
+    <string name="Home_Delete">删除</string>
+    <string name="Home_Update">修改</string>
+    <string name="Home_Add">新增</string>
+    <string name="Home_CreateCompany">创建名片</string>
+    <string name="Home_createCompanyHint">您还没有名片，请创建名片.</string>
+    <string name="Bottom_Info">我的信息</string>
+    <string name="Bottom_Company">我的企业</string>
+    <string name="Bottom_Invoice">发票管理</string>
+    <string name="Bottom_Home">首页</string>
 
 </resources>

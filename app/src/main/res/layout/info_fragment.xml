@@ -44,7 +44,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="15dp"
                     android:layout_toRightOf="@+id/info_head_iv"
-                    android:text="账号："
+                    android:text="用户名："
                     android:textSize="14sp"/>
 
                 <TextView
@@ -53,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:layout_toRightOf="@+id/info_user_tv"
-                    android:text="testName"
+                    android:text="未登陆"
                     android:textSize="14sp"/>
 
                 <TextView
@@ -64,7 +64,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_toRightOf="@+id/info_head_iv"
-                    android:text="用户名："
+                    android:text="账号："
                     android:textColor="#cccccc"
                     android:textSize="14sp"/>
 
@@ -75,7 +75,7 @@
                     android:layout_below="@+id/info_userName_tv"
                     android:layout_marginTop="5dp"
                     android:layout_toRightOf="@+id/info_userBottom_tv"
-                    android:text="testAccount"
+                    android:text="未登陆"
                     android:textColor="#cccccc"
                     android:textSize="14sp"/>
 
@@ -87,7 +87,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                app:setLeftBackground="@mipmap/bangs"
+                app:setLeftBackground="@mipmap/qyrz"
                 app:setTitleDescribe="企业认证"
                 android:onClick="@{onClickListener}"
                 />
@@ -96,7 +96,7 @@
                 android:id="@+id/info_mpsz_rl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:setLeftBackground="@mipmap/tickets"
+                app:setLeftBackground="@mipmap/mrmp"
                 app:setTitleDescribe="默认名片设置"
                 android:onClick="@{onClickListener}"
                 />
@@ -105,7 +105,7 @@
                 android:id="@+id/info_smqsz_rl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:setLeftBackground="@mipmap/bangs"
+                app:setLeftBackground="@mipmap/smqsz"
                 app:setTitleDescribe="扫描枪设置"
                 android:onClick="@{onClickListener}"
                 />
@@ -115,7 +115,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                app:setLeftBackground="@mipmap/gengxin"
+                app:setLeftBackground="@mipmap/czsm"
                 app:setTitleDescribe="操作说明"
                 android:onClick="@{onClickListener}"
                 />
@@ -124,7 +124,7 @@
                 android:id="@+id/info_fwxy_rl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:setLeftBackground="@mipmap/gengxin"
+                app:setLeftBackground="@mipmap/fwxy"
                 app:setTitleDescribe="服务协议"
                 android:onClick="@{onClickListener}"
                 />
@@ -133,7 +133,7 @@
                 android:id="@+id/info_bbh_rl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:setLeftBackground="@mipmap/gengxin"
+                app:setLeftBackground="@mipmap/bbh"
                 app:setTitleDescribe="版本号"
                 android:onClick="@{onClickListener}"
                 />
@@ -142,7 +142,7 @@
                 android:id="@+id/info_bbgx_rl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:setLeftBackground="@mipmap/gengxin"
+                app:setLeftBackground="@mipmap/bbgx"
                 app:setTitleDescribe="版本更新"
                 android:onClick="@{onClickListener}"
                 />

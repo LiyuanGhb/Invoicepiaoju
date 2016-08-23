@@ -42,8 +42,8 @@ public class CallServer {
                 (what, request, new HttpResponseListener<T>(context, request, callback, canCancel, isLoading));
     }
 
-    public <T> void add(int what, Request<T> request, HttpListener<T> callback) {
-        requestQueue.add(what, request, new HttpResponseListener<T>(request, callback));
+    public <T> void add(int what, Context context, Request<T> request, HttpListener<T> callback) {
+        requestQueue.add(what, request, new HttpResponseListener<T>(context, request, callback));
     }
 
     /**

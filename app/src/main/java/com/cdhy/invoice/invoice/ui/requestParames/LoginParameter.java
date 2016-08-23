@@ -141,9 +141,4 @@ public class LoginParameter {
         Log.e("url", url);
         return url;
     }
-
-
-
-
-
 }

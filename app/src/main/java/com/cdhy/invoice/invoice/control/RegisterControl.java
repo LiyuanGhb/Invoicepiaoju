@@ -7,6 +7,7 @@ import com.cdhy.invoice.invoice.model.RegisterBean;
 public class RegisterControl {
     public interface View extends BaseView {
         void registerSuccess();
+        void OnHttpListenerFailed(String error);
     }
 
 

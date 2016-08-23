@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by Administrator on 2016/8/12.
  */
 
-public class Data implements Serializable{
+public class Data implements Serializable {
     private String athID;
 
     private String ZSXM;
@@ -19,40 +19,51 @@ public class Data implements Serializable{
 
     private String BZ;
 
-    public void setAthID(String athID){
+    public void setAthID(String athID) {
         this.athID = athID;
     }
-    public String getAthID(){
+
+    public String getAthID() {
         return this.athID;
     }
-    public void setZSXM(String ZSXM){
+
+    public void setZSXM(String ZSXM) {
         this.ZSXM = ZSXM;
     }
-    public String getZSXM(){
+
+    public String getZSXM() {
         return this.ZSXM;
     }
-    public void setID(String ID){
+
+    public void setID(String ID) {
         this.ID = ID;
     }
-    public String getID(){
+
+    public String getID() {
         return this.ID;
     }
-    public void setEMAIL(String EMAIL){
+
+    public void setEMAIL(String EMAIL) {
         this.EMAIL = EMAIL;
     }
-    public String getEMAIL(){
+
+    public String getEMAIL() {
         return this.EMAIL;
     }
-    public void setUSERNAME(String USERNAME){
+
+    public void setUSERNAME(String USERNAME) {
         this.USERNAME = USERNAME;
     }
-    public String getUSERNAME(){
+
+    public String getUSERNAME() {
         return this.USERNAME;
     }
-    public void setBZ(String BZ){
+
+    public void setBZ(String BZ) {
         this.BZ = BZ;
     }
-    public String getBZ(){
+
+    public String getBZ() {
         return this.BZ;
     }
 }

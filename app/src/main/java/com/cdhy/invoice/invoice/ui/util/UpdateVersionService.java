@@ -75,7 +75,7 @@ public class UpdateVersionService {
                 showUpdateVersionDialog();// 显示提示对话框
             } else {
                 if (chose == 1) {
-                    DialogHb.showdialog(context, "当前已是最新版本，版本号1.7");
+                    DialogHb.showdialog(context, "当前已是最新版本，版本号1.8");
                 }
             }
         }

@@ -37,6 +37,8 @@ import com.cdhy.invoice.invoice.ui.util.UploadUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -77,6 +79,7 @@ public class AccreditationActivity extends Activity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+
             DialogHb.showdialog(AccreditationActivity.this, msg.obj.toString());
         }
     };
@@ -121,6 +124,7 @@ public class AccreditationActivity extends Activity {
     }
 
     private void getdata() {
+        CustomApplication.index = true;
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -339,7 +343,7 @@ public class AccreditationActivity extends Activity {
                                 String s = UploadUtil.uploadFile(
                                         file,
                                         MineUrl.uploda
-                                                + "?" +"athID="
+                                                + "?" + "athID="
                                                 + CustomApplication.athID
                                                 + "&type=Android&nsrsbh="
                                                 + shuihao.getText().toString() + "&zjlx=gsyyzz");
@@ -388,7 +392,7 @@ public class AccreditationActivity extends Activity {
                             @Override
                             public void run() {
                                 String s = UploadUtil.uploadFile(file, MineUrl.uploda + "?" + "athID="
-                                        + CustomApplication.athID+ "&type=Android&nsrsbh=" + shuihao.getText().toString()
+                                        + CustomApplication.athID + "&type=Android&nsrsbh=" + shuihao.getText().toString()
                                         + "&zjlx=szhy");
                                 String data = rtnData(s);
                                 if (!data.equals("成功")) {
@@ -401,17 +405,26 @@ public class AccreditationActivity extends Activity {
                     }
                     break;
                 case 2:
-                    Bitmap bm = null;
+                    Bitmap bm2 = null;
                     ContentResolver resolver = getContentResolver();
                     try {
                         final Uri originalUri = data.getData();        //获得图片的uri
-                        bm = MediaStore.Images.Media.getBitmap(resolver, originalUri);        //显得到bitmap图片
+
+                        bm2 = MediaStore.Images.Media.getBitmap(resolver, originalUri);        //显得到bitmap图片
+
                         String[] proj = {MediaStore.Images.Media.DATA};
                         Cursor cursor = managedQuery(originalUri, proj, null, null, null);
                         int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
                         cursor.moveToFirst();
                         srcPath = cursor.getString(column_index);
                         final File files = new File(srcPath);
+                        imageFile = new File(srcPath);
+                        int scale2 = 2;
+                        scale = getZoomScale(files);//得到缩放倍数
+                        BitmapFactory.Options options2 = new BitmapFactory.Options();
+                        options2.inSampleSize = scale2;
+                        final File file2 = new File(srcPath);
+
                         if (type == 1) {
                             new Thread(new Runnable() {
                                 @Override
@@ -420,7 +433,7 @@ public class AccreditationActivity extends Activity {
                                             + CustomApplication.athID + "&type=Android&nsrsbh="
                                             + shuihao.getText().toString() + "&zjlx=gsyyzz");
                                     String data = rtnData(s);
-                                    if(""!=data || null!=data) {
+                                    if ("" != data || null != data) {
                                         if (!data.equals("成功")) {
                                             Message message = new Message();
                                             message.obj = data;
@@ -429,26 +442,25 @@ public class AccreditationActivity extends Activity {
                                     }
                                 }
                             }).start();
-                            gsyyzz.setImageBitmap(bm);
+                            gsyyzz.setImageBitmap(BitmapFactory.decodeFile(srcPath, options2));//按指定options显示图片防止OOM
                         } else if (type == 2) {
                             new Thread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    String s = UploadUtil.uploadFile(files, MineUrl.uploda + "?" +"athID="
+                                    String s = UploadUtil.uploadFile(files, MineUrl.uploda + "?" + "athID="
                                             + CustomApplication.athID + "&type=Android&nsrsbh="
                                             + shuihao.getText().toString() + "&zjlx=swdjz");
                                     String data = rtnData(s);
-                                    if(""!=data || null!=data){
+                                    if ("" != data || null != data) {
                                         if (!data.equals("成功")) {
                                             Message message = new Message();
                                             message.obj = data;
                                             getHandler.sendMessage(message);
                                         }
                                     }
-
                                 }
                             }).start();
-                            swdj.setImageBitmap(bm);
+                            swdj.setImageBitmap(BitmapFactory.decodeFile(srcPath, options2));//按指定options显示图片防止OOM
                         } else if (type == 3) {
                             new Thread(new Runnable() {
                                 @Override
@@ -464,12 +476,12 @@ public class AccreditationActivity extends Activity {
                                     }
                                 }
                             }).start();
-                            zzjg.setImageBitmap(bm);
+                            zzjg.setImageBitmap(BitmapFactory.decodeFile(srcPath, options2));//按指定options显示图片防止OOM
                         } else if (type == 4) {
                             new Thread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    String s = UploadUtil.uploadFile(files, MineUrl.uploda + "?" +"athID="
+                                    String s = UploadUtil.uploadFile(files, MineUrl.uploda + "?" + "athID="
                                             + CustomApplication.athID + "&type=Android&nsrsbh="
                                             + shuihao.getText().toString() + "&zjlx=szhy");
                                     String data = rtnData(s);
@@ -480,9 +492,8 @@ public class AccreditationActivity extends Activity {
                                     }
                                 }
                             }).start();
-                            szhy.setImageBitmap(bm);
+                            szhy.setImageBitmap(BitmapFactory.decodeFile(srcPath, options2));//按指定options显示图片防止OOM
                         }
-
                     } catch (IOException e) {
                         Log.e("this", e.toString());
                     }
@@ -517,5 +528,6 @@ public class AccreditationActivity extends Activity {
         }
         return rtndata;
     }
+
 
 }

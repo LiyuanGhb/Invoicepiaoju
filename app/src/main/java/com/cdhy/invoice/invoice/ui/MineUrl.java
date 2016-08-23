@@ -28,9 +28,9 @@ public class MineUrl {
     public static String checkUser = urlHead + "page/checkuser.do";//判断用户名是否存在 username
     public static String bindTaiTou = urlHead + "page/bindFptaitou.do";//'zsxm=' + 抬头 + '&grdh=' + 个人电话 + '&grmail=' + 个人邮箱 + '&openid=' + 移动端所传特殊标识+'&type='移动端类型(wx=微信，app=APP)
     public static String getTaiTou = urlHead + "page/getFptaitou.do";//'openid=' + 移动端所传特殊标识+'&type='+移动端类型(wx=微信，app=APP)
-    public static String getcardinfo = "http://192.168.0.30/piaoju/other/getCardInfo.do";
-    public static String newHeads = "http://192.168.0.28/piaoju/cdhy/service.do";
-    public static String uploda = "http:192.168.0.28/piaoju/cdhy/uploadCom.do";
+    public static String getcardinfo = "http:/www.hydzfp.com/piaoju/other/getCardInfo.do";
+    public static String newHeads = "http://www.hydzfp.com/piaoju/cdhy/service.do";
+    public static String uploda = "http://www.hydzfp.com/piaoju/cdhy/uploadCom.do";
 
     /**
      * 判断字符串是否是数字

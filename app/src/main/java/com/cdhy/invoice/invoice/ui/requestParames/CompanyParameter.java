@@ -20,6 +20,7 @@ public class CompanyParameter {
             json.put("invoke", "queryCard");
             JSONObject js = new JSONObject();
             js.put("type", "Android");
+            js.put("athID", CustomApplication.athID);
             js.put("client", CustomApplication.DEVICE_ID);
             json.put("p", js);
         } catch (JSONException e) {
@@ -42,6 +43,7 @@ public class CompanyParameter {
             JSONObject js = new JSONObject();
             js.put("id", custinfo);
             js.put("type", "Android");
+            js.put("athID", CustomApplication.athID);
             js.put("client", CustomApplication.DEVICE_ID);
             json.put("p", js);
         } catch (JSONException e) {
@@ -64,6 +66,7 @@ public class CompanyParameter {
             js.put("khh", yh);
             js.put("yhzh", yhzh);
             js.put("type", "Android");
+            js.put("athID", CustomApplication.athID);
             js.put("client", CustomApplication.DEVICE_ID);
             json.put("p", js);
         } catch (JSONException e) {
@@ -90,6 +93,7 @@ public class CompanyParameter {
             js.put("khh", yh);
             js.put("yhzh", yhzh);
             js.put("type", "Android");
+            js.put("athID", CustomApplication.athID);
             js.put("client", CustomApplication.DEVICE_ID);
             json.put("p", js);
         } catch (JSONException e) {
@@ -108,6 +112,7 @@ public class CompanyParameter {
             JSONObject js = new JSONObject();
             js.put("type", "Android");
             js.put("id", custinfo);
+            js.put("athID", CustomApplication.athID);
             js.put("client", CustomApplication.DEVICE_ID);
             json.put("p", js);
         } catch (JSONException e) {

@@ -3,6 +3,7 @@ package com.cdhy.invoice.invoice.ui.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import com.cdhy.invoice.invoice.QRUtil;
 import com.cdhy.invoice.invoice.model.Card.Data;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -20,13 +22,17 @@ import java.util.List;
 public class ViewPagerAdapter extends PagerAdapter {
     private Context mContext;
     private SparseArray<ImageView> mSparseArray;
-
+    private HashMap<Integer, String> map;
     private List<Data> mCardBean;
+    showimg showimgs;
 
-    public ViewPagerAdapter(Context mContext, List<Data> mCardBean) {
+
+    public ViewPagerAdapter(Context mContext, List<Data> mCardBean, showimg showimgs) {
         this.mContext = mContext;
         this.mCardBean = mCardBean;
         mSparseArray = new SparseArray<>();
+        map = new HashMap<>();
+        this.showimgs = showimgs;
     }
 
     @Override
@@ -42,6 +48,12 @@ public class ViewPagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
         ImageView mImageView = createImageView(position);
+        mImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showimgs.show(map.get(position));
+            }
+        });
         (container).addView(mImageView);
         return mImageView;
     }
@@ -57,7 +69,7 @@ public class ViewPagerAdapter extends PagerAdapter {
             Data cardBean = mCardBean.get(key);
             ImageView mImageView = new ImageView(mContext);
             String url = QRUtil.createString(
-                    "",
+                    cardBean.getUSERID(),
                     cardBean.getNAME(),
                     cardBean.getNSRSBH(),
                     cardBean.getADDRESS(),
@@ -68,7 +80,12 @@ public class ViewPagerAdapter extends PagerAdapter {
             Bitmap mBitmap = QRUtil.createQRImage(url);
             mImageView.setImageBitmap(mBitmap);
             mSparseArray.put(key, mImageView);
+            map.put(key, url);
         }
         return mSparseArray.get(key);
+    }
+
+    public interface showimg {
+        public void show(String s);
     }
 }

@@ -6,6 +6,7 @@ import com.cdhy.invoice.invoice.BaseView;
 public class SettingFragmentControl {
     public interface View extends BaseView {
         void setUserDescribe(String userName, String userDescribe);
+        void OnHttpListenerFailed(String error);
 
     }
 

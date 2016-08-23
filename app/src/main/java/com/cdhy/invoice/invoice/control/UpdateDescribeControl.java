@@ -10,6 +10,7 @@ import com.cdhy.invoice.invoice.BaseView;
 public class UpdateDescribeControl {
     public interface View extends BaseView{
         void updateUserDescribeSuccess();
+        void OnHttpListenerFailed(String error);
     }
 
     public interface Presenter extends BasePresenter{

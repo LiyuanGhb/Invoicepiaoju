@@ -67,9 +67,13 @@ public class MyecuItemAdapter extends BaseAdapter {
         if ("1".equals(ecuInfoBean.getUPLOAD())) {
           viewHolder.guanli.setText("正在认证中");
           viewHolder.guanli.setTextColor(context.getResources().getColor( R.color.appColor));
-        } else {
+        } else if("0".equals(ecuInfoBean.getUPLOAD())){
             viewHolder.guanli.setText("未认证");
             viewHolder.guanli.setTextColor(context.getResources().getColor(R.color.red));
+        }else{
+            //viewHolder.guanli.setVisibility(View.GONE);
+            viewHolder.guanli.setText("已经认证");
+            viewHolder.guanli.setTextColor(context.getResources().getColor( R.color.green));
         }
         viewHolder.gongsi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,4 +91,13 @@ public class MyecuItemAdapter extends BaseAdapter {
         RelativeLayout relativeLayout;
         ImageView gongsi;
     }
+    public void remove(int index) {
+        if (index < 0) {
+            return;
+        } else {
+            list.remove(index);
+        }
+        notifyDataSetChanged();
+    }
+
 }

@@ -8,6 +8,7 @@ import com.cdhy.invoice.invoice.model.User.Data;
 public class PassWordLoginControl {
     public interface View extends BaseView {
         void PassWordForSuccessSuccess();
+        void OnHttpListenerFailed(String error);
     }
 
     public interface Presenter extends BasePresenter {

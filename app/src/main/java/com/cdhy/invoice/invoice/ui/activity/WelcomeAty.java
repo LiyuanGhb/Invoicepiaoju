@@ -34,6 +34,8 @@ public class WelcomeAty extends Activity {
         if (loginState) {
             CustomApplication.athID = mSharedPreferencesHelper.getStringByShared(SharedPreferencesHelper.ATHID, "");
             CustomApplication.userId = mSharedPreferencesHelper.getStringByShared(SharedPreferencesHelper.USER_ID, "");
+            CustomApplication.ZSXM = mSharedPreferencesHelper.getStringByShared(SharedPreferencesHelper.ZSXM, "");
+            CustomApplication.userName = mSharedPreferencesHelper.getStringByShared(SharedPreferencesHelper.USERNAME, "");
             CustomApplication.ip = mSharedPreferencesHelper.getStringByShared(SharedPreferencesHelper.IP, "");
             CustomApplication.saveIp = mSharedPreferencesHelper.getBooleanByShared(SharedPreferencesHelper.SAVE_IP, false);
         }

@@ -3,12 +3,16 @@ package com.cdhy.invoice.invoice.ui.activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.databinding.DataBindingUtil;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cdhy.invoice.invoice.R;
 import com.cdhy.invoice.invoice.control.MainAtyControl;
@@ -21,22 +25,31 @@ import com.cdhy.invoice.invoice.ui.fragment.HomeFragment;
 import com.cdhy.invoice.invoice.ui.fragment.InvoiceFragment;
 import com.cdhy.invoice.invoice.ui.fragment.SettingFragment;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
  * Created by zby on 2016/8/5. 首页
  */
-public class MainAty extends BaseActivity implements View.OnClickListener, MainAtyControl.View {
+public class MainAty extends BaseActivity implements MainAtyControl.View, RadioGroup.OnCheckedChangeListener {
     private MainLayoutBinding mBinding;
+    private NavigationBottomBinding mNavigationBottomBinding;
     private MainPresenter mPresenter;
-    private Map<String, Boolean> mIsCreateFragment;
+    private FragmentManager mFragmentManager;
 
     private HomeFragment mHomeFragment = null;
     private InvoiceFragment mInvoiceFragment = null;
     private CompanyFragment mCompanyFragment = null;
     private SettingFragment mSettingFragment = null;
+
+    private int currentFragment = 0;//记录当前Fragmentment
+    private static final int HOME = 0;
+    private static final int INVOICE = 1;
+    private static final int COMPANY = 2;
+    private static final int INFO = 3;
+    private List<Fragment> mFragmentList;
+    private List<Button> mButtonList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,102 +59,157 @@ public class MainAty extends BaseActivity implements View.OnClickListener, MainA
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.i("System", "onDestroy: ");
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putInt("position", currentFragment);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        currentFragment = savedInstanceState.getInt("position");
+        setTabSelection(currentFragment);
+        super.onRestoreInstanceState(savedInstanceState);
     }
 
     private void initParams() {
-        NavigationBottomBinding mNavigationBottomBinding =
+        mNavigationBottomBinding =
                 DataBindingUtil.bind(mBinding.mainNavigationBottom.getRoot());
-        mNavigationBottomBinding.setOnClickListener(this);
+        mNavigationBottomBinding.navContain.setOnCheckedChangeListener(this);
+        mNavigationBottomBinding.navHome
+                .setCompoundDrawables(null, setDrawableTop(R.mipmap.home_page_0), null, null);
+        mButtonList = new ArrayList<>();
 
+        mFragmentManager = getFragmentManager();
+        mFragmentList = new ArrayList<>();
         mPresenter = new MainPresenter(this);
-        mIsCreateFragment = new HashMap<>();
-
-        mPresenter.showFragment(new HomeFragment(), "票聚");
+        mPresenter.showFragment(HOME, "首页");
     }
 
-
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        switch (checkedId) {
             case R.id.nav_home:
-              /*  if (mIsCreateFragment.get("HomeFragment")) {
-                    visibleFragment(true, mHomeFragment);
-                    visibleFragment(false, mInvoiceFragment);
-                    visibleFragment(false, mCompanyFragment);
-                    visibleFragment(false, mSettingFragment);
-                } else {*/
-                    mHomeFragment = new HomeFragment();
-                    mPresenter.showFragment(mHomeFragment, "首页");
-               // }
+                mPresenter.showFragment(HOME, "首页");
+                mNavigationBottomBinding.navHome
+                        .setCompoundDrawables(null, setDrawableTop(R.mipmap.home_page_0), null, null);
+                mNavigationBottomBinding.navInvoice
+                        .setCompoundDrawables(null, setDrawableTop(R.mipmap.fpgl), null, null);
+                mNavigationBottomBinding.navCompany
+                        .setCompoundDrawables(null, setDrawableTop(R.mipmap.company), null, null);
+                mNavigationBottomBinding.navInfo
+                        .setCompoundDrawables(null, setDrawableTop(R.mipmap.info), null, null);
                 break;
             case R.id.nav_invoice:
-             /*   if (mIsCreateFragment.get("InvoiceFragment")) {
-                    visibleFragment(false, mHomeFragment);
-                    visibleFragment(true, mInvoiceFragment);
-                    visibleFragment(false, mCompanyFragment);
-                    visibleFragment(false, mSettingFragment);
-                } else {*/
-                    mInvoiceFragment = new InvoiceFragment();
-                    mPresenter.showFragment(mInvoiceFragment, "我的发票");
-                /*}*/
+                mPresenter.showFragment(INVOICE, "发票管理");
+                mNavigationBottomBinding.navHome
+                        .setCompoundDrawables(null, setDrawableTop(R.mipmap.home_page), null, null);
+                mNavigationBottomBinding.navInvoice
+                        .setCompoundDrawables(null, setDrawableTop(R.mipmap.fpgl_0), null, null);
+                mNavigationBottomBinding.navCompany
+                        .setCompoundDrawables(null, setDrawableTop(R.mipmap.company), null, null);
+                mNavigationBottomBinding.navInfo
+                        .setCompoundDrawables(null, setDrawableTop(R.mipmap.info), null, null);
                 break;
             case R.id.nav_company:
-             /*   if (mIsCreateFragment.get("CompanyFragment")) {
-                    visibleFragment(false, mHomeFragment);
-                    visibleFragment(false, mInvoiceFragment);
-                    visibleFragment(true, mCompanyFragment);
-                    visibleFragment(false, mSettingFragment);
-                } else {*/
-                    mCompanyFragment = new CompanyFragment();
-                    mPresenter.showFragment(mCompanyFragment, "我的名片");
-               /* }*/
+                mPresenter.showFragment(COMPANY, "我的企业");
+                mNavigationBottomBinding.navHome
+                        .setCompoundDrawables(null, setDrawableTop(R.mipmap.home_page), null, null);
+                mNavigationBottomBinding.navInvoice
+                        .setCompoundDrawables(null, setDrawableTop(R.mipmap.fpgl), null, null);
+                mNavigationBottomBinding.navCompany
+                        .setCompoundDrawables(null, setDrawableTop(R.mipmap.company_0), null, null);
+                mNavigationBottomBinding.navInfo
+                        .setCompoundDrawables(null, setDrawableTop(R.mipmap.info), null, null);
                 break;
             case R.id.nav_info:
-       /*         if (mIsCreateFragment.get("SettingFragment")) {
-                    visibleFragment(false, mHomeFragment);
-                    visibleFragment(false, mInvoiceFragment);
-                    visibleFragment(false, mCompanyFragment);
-                    visibleFragment(true, mSettingFragment);
-                } else {*/
-                    mSettingFragment = new SettingFragment();
-                    mPresenter.showFragment(mSettingFragment, "我的信息");
-           /*     }*/
+                mPresenter.showFragment(INFO, "我的信息");
+                mNavigationBottomBinding.navHome
+                        .setCompoundDrawables(null, setDrawableTop(R.mipmap.home_page), null, null);
+                mNavigationBottomBinding.navInvoice
+                        .setCompoundDrawables(null, setDrawableTop(R.mipmap.fpgl), null, null);
+                mNavigationBottomBinding.navCompany
+                        .setCompoundDrawables(null, setDrawableTop(R.mipmap.company), null, null);
+                mNavigationBottomBinding.navInfo
+                        .setCompoundDrawables(null, setDrawableTop(R.mipmap.info_0), null, null);
                 break;
         }
     }
 
-    private FragmentManager mFragmentManager;
+    private Drawable setDrawableTop(int res) {
+        Drawable mDrawable = getResources().getDrawable(res);
+        mDrawable.setBounds(0, 0, mDrawable.getMinimumWidth(), mDrawable.getMinimumHeight());
+        return mDrawable;
+    }
+
 
     @Override
-    public void initFragmentAndTitle(Fragment fragment, String title) {
+    public void initFragmentAndTitle(int index, String title) {
+        setTabSelection(index);
         mBinding.setTitle(title);
-        if (mFragmentManager == null) {
-            mFragmentManager = getFragmentManager();
-        }
-        FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.add(R.id.main_fragment_contain, fragment);
-        mIsCreateFragment.put(fragment.getClass().getSimpleName(), true);
-        mFragmentTransaction.commit();
     }
 
-    private void visibleFragment(boolean hint, Fragment fragment) {
-        if (mFragmentManager == null) {
-            mFragmentManager = getFragmentManager();
-        }
+    private void setTabSelection(int position) {
+        currentFragment = position;
         FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
-        if (hint) {
-            mFragmentTransaction.show(fragment);
-        } else {
-            mFragmentTransaction.hide(fragment);
+        hideFragment();
+        switch (position) {
+            case HOME:
+                if (mHomeFragment == null) {
+                    mHomeFragment = new HomeFragment();
+                    mFragmentTransaction.add(R.id.main_fragment_contain, mHomeFragment);
+                    mFragmentList.add(mHomeFragment);
+                } else {
+                    mFragmentTransaction.show(mHomeFragment);
+                }
+                break;
+            case INVOICE:
+                if (mInvoiceFragment == null) {
+                    mInvoiceFragment = new InvoiceFragment();
+                    mFragmentTransaction.add(R.id.main_fragment_contain, mInvoiceFragment);
+                    mFragmentList.add(mInvoiceFragment);
+                } else {
+                    mFragmentTransaction.show(mInvoiceFragment);
+                }
+                break;
+            case COMPANY:
+                if (mCompanyFragment == null) {
+                    mCompanyFragment = new CompanyFragment();
+                    mFragmentTransaction.add(R.id.main_fragment_contain, mCompanyFragment);
+                    mFragmentList.add(mCompanyFragment);
+                } else {
+                    mFragmentTransaction.show(mCompanyFragment);
+                }
+                break;
+            case INFO:
+                if (mSettingFragment == null) {
+                    mSettingFragment = new SettingFragment();
+                    mFragmentTransaction.add(R.id.main_fragment_contain, mSettingFragment);
+                    mFragmentList.add(mSettingFragment);
+                } else {
+                    mFragmentTransaction.show(mSettingFragment);
+                }
+                break;
         }
-        mFragmentTransaction.commit();
+        mFragmentTransaction.commitAllowingStateLoss();
     }
+
+    private void hideFragment() {
+        if (mFragmentList.size() > 0) {
+            for (Fragment mFragment : mFragmentList) {
+                FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
+                mFragmentTransaction.hide(mFragment);
+                mFragmentTransaction.commitAllowingStateLoss();
+            }
+        }
+    }
+
 
     @Override
     public void hintMessage(String msg) {
 
+    }
+
+    @Override
+    public Context getViewContext() {
+        return this;
     }
 }
