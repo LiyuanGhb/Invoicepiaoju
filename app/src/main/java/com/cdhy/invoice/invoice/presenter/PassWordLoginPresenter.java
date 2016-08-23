@@ -1,11 +1,14 @@
 package com.cdhy.invoice.invoice.presenter;
 
+import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
 import com.cdhy.invoice.invoice.CustomApplication;
 import com.cdhy.invoice.invoice.control.PassWordLoginControl;
 import com.cdhy.invoice.invoice.model.ResultRoot;
+import com.cdhy.invoice.invoice.model.UseDescribeBean;
+import com.cdhy.invoice.invoice.model.User.Data;
 import com.cdhy.invoice.invoice.model.User.UserMessage;
 import com.cdhy.invoice.invoice.model.User.UserRoot;
 import com.cdhy.invoice.invoice.nohttp.CallServer;
@@ -27,9 +30,11 @@ import static android.content.ContentValues.TAG;
 
 public class PassWordLoginPresenter implements PassWordLoginControl.Presenter {
     private PassWordLoginControl.View mView;
+    private Context mContext;
 
     public PassWordLoginPresenter(PassWordLoginControl.View mView) {
         this.mView = mView;
+        mContext = mView.getViewContext();
     }
 
     @Override
@@ -41,22 +46,32 @@ public class PassWordLoginPresenter implements PassWordLoginControl.Presenter {
         } else {
             Request<JSONObject> mRequest = NoHttp.createJsonObjectRequest(UrlUtils.mainUrl, RequestMethod.POST);
             mRequest.setDefineRequestBodyForJson(new LoginParameter().loginByPwd(userName, passWord));
-            CallServer.getRequestInstance().add(0, mRequest, new HttpListener<JSONObject>() {
+            CallServer.getRequestInstance().add(0, mContext, mRequest, new HttpListener<JSONObject>() {
                 @Override
                 public void onSucceed(int what, Response<JSONObject> response) {
                     Log.i(TAG, "onSucceed: " + response.get().toString());
                     UserRoot mRoot = new Gson().fromJson(response.get().toString(), UserRoot.class);
-                    mView.hintMessage(mRoot.getMsg());
+
                     if (mRoot.getResultType().equals("SUCCESS")) {
-                        UserMessage.newInstance().setUserBean(mRoot.getData());
+                        // FIXME: 2016/8/17 测试athId记得删除
+                        Data mData = mRoot.getData();
+                        // mData.setAthID("BF11C2E3BA0C4D0CB6831F8DECF81516");
+                        UserMessage.newInstance().setUserBean(mData);
                         mView.PassWordForSuccessSuccess();
+                    }else{
+                        mView.OnHttpListenerFailed("");
                     }
+                    mView.hintMessage(mRoot.getMsg());
                 }
 
                 @Override
-                public void onFailed(int what, String url, Object tag, CharSequence error, int resCode, long ms) {
-                    Log.i(TAG, "onFailed: " + error.toString());
-                    mView.hintMessage(error.toString());
+                public void onFailed(int what, String url, Object tag, String error, int resCode, long ms) {
+                    Log.e(TAG, "PassWordLoginPresenter_PassWordLogin_onFailed_url: " + url);
+                    Log.e(TAG, "PassWordLoginPresenter_PassWordLogin_onFailed_tag: " + tag);
+                    Log.e(TAG, "PassWordLoginPresenter_PassWordLogin_onFailed_error: " + error);
+                    Log.e(TAG, "PassWordLoginPresenter_PassWordLogin_onFailed_resCode: " + resCode);
+                    Log.e(TAG, "PassWordLoginPresenter_PassWordLogin_onFailed_ms: " + ms);
+                    mView.OnHttpListenerFailed(error);
                 }
             });
         }
