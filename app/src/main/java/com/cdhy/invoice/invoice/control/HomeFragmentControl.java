@@ -13,6 +13,8 @@ public class HomeFragmentControl {
         void deleteCompanySuccess();
 
         void queryCompanySuccess(CompanyRoot mCompanyRoot);
+
+        void OnHttpListenerFailed(String error);
     }
 
     public interface Presenter extends BasePresenter {
