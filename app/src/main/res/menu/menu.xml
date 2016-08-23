@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/makeover_menu"
+        android:title="转让管理员" />
+    <item
+        android:id="@+id/setchose_menu"
+        android:title="设置人员审核" />
+</menu>

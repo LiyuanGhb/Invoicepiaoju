@@ -53,7 +53,6 @@ public class PassWordLoginPresenter implements PassWordLoginControl.Presenter {
                     UserRoot mRoot = new Gson().fromJson(response.get().toString(), UserRoot.class);
 
                     if (mRoot.getResultType().equals("SUCCESS")) {
-                        // FIXME: 2016/8/17 测试athId记得删除
                         Data mData = mRoot.getData();
                         // mData.setAthID("BF11C2E3BA0C4D0CB6831F8DECF81516");
                         UserMessage.newInstance().setUserBean(mData);

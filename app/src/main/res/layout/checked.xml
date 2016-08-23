@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<TextView
+    android:id="@+id/checked_name"
+    android:layout_width="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/checked_phone"
+        android:layout_below="@+id/checked_name"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/checked_delete_btn"
+        android:layout_width="80dp"
+        android:background="@drawable/buttonred"
+        android:text="删 除"
+        android:textColor="@color/white"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_height="25dp" />
+</RelativeLayout>

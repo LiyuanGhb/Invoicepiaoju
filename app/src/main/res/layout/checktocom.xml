@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="onclick"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/checktocom_top"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/appColor">
+
+            <RelativeLayout
+                android:id="@+id/rl_back_checktocom"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/select_bg"
+                android:onClick="@{onclick}">
+
+                <ImageView
+                    android:id="@+id/iv_back_checktocom"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:src="@mipmap/back" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:text="企业成员"
+                android:textColor="@color/bg_White"
+                android:textSize="14sp" />
+            <RelativeLayout
+                android:id="@+id/checktocom_set_rl"
+                android:layout_width="40dp"
+                android:layout_alignParentRight="true"
+                android:onClick="@{onclick}"
+                android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/checktocom_set_img"
+                android:background="@mipmap/sets"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/checktocom_btn_ing"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/loginsleft_click"
+                android:onClick="@{onclick}"
+                android:text="待审核成员"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/checktocom_btn_ed"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/logins2"
+                android:onClick="@{onclick}"
+                android:text="已审核成员"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/checktocom_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:divider="@color/light_gray"
+            android:dividerHeight="10dp"></ListView>
+    </LinearLayout>
+</layout>
